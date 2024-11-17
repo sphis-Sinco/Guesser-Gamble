@@ -38,6 +38,7 @@ class PlayState extends FlxState
 		var choiceAm:Int = 0;
 		var choiceRow:Int = 0;
 		var padding:Int = 8;
+
 		for (i in 0...choices_array.length)
 		{
 			var choice:FlxSprite = new FlxSprite().makeGraphic(32, 32, FlxColor.RED);
@@ -45,6 +46,7 @@ class PlayState extends FlxState
 			if (choiceAm == 4)
 			{
 				choiceRow++;
+				choiceAm = 0;
 			}
 
 			choice.x = 16 + ((i - (choiceRow * 4)) * (choice.graphic.width + padding));
