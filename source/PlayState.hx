@@ -5,8 +5,8 @@ import flixel.FlxState;
 
 class PlayState extends FlxState
 {
-	public var choiceID_right:Int = 0;
-	public var choiceID_wrong:Int = 1;
+	public var choiceID_wrong:Int = 0;
+	public var choiceID_right:Int = 1;
 
 	public var choices_length:Int = 10;
 	public var choices_array:Array<Int> = [];
@@ -21,9 +21,9 @@ class PlayState extends FlxState
 		{
 			var random:Float = Math.random();
 			if ((index == (choices_length - 1) || random >= 0.5) && !choices_array.contains(1))
-				choices_array.push(1);
+				choices_array.push(choiceID_right);
 			else
-				choices_array.push(0);
+				choices_array.push(choiceID_wrong);
 
 			index++;
 		}
