@@ -47,11 +47,11 @@ class PlayState extends FlxState
 				choiceRow++;
 			}
 
-			choice.x = 16 + ((i - (choiceRow * 4)) * (choice.width + padding));
-			choice.y = 16 + (choiceRow * (choice.height + padding));
+			choice.x = 16 + ((i - (choiceRow * 4)) * (choice.graphic.width + padding));
+			choice.y = 16 + (choiceRow * (choice.graphic.height + padding));
 
 			if (choices_array[i] == 1)
-				choice.color = FlxColor.LIME;
+				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
 
 			choices.add(choice);
 
