@@ -46,7 +46,7 @@ class PlayState extends FlxState
 				choiceRow++;
 			}
 
-			choice.x = 16 + ((i - 4) * 32);
+			choice.x = 16 + ((i - (choiceRow * 4)) * 32);
 			choice.y = 16 + (choiceRow * 32);
 
 			if (choices_array[i] == 1)
