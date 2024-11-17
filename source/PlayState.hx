@@ -1,7 +1,10 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
@@ -9,7 +12,9 @@ class PlayState extends FlxState
 	public var choiceID_right:Int = 1;
 
 	public var choices_length:Int = 10;
+
 	public var choices_array:Array<Int> = [];
+	public var choices:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
 	override public function new()
 	{
@@ -30,11 +35,35 @@ class PlayState extends FlxState
 
 		trace(choices_array);
 
+		var choiceAm:Int = 0;
+		var choiceRow:Int = 0;
+		for (i in 0...choices_array.length)
+		{
+			var choice:FlxSprite = new FlxSprite(16 + (i * 32), 16).makeGraphic(32, 32, FlxColor.RED);
+
+			if (choiceAm == 4)
+			{
+				choiceRow++;
+			}
+
+			choice.x = 16 + ((i - 4) * 32);
+			choice.y = 16 + (choiceRow * 32);
+
+			if (choices_array[i] == 1)
+				choice.color = FlxColor.GREEN;
+
+			choices.add(choice);
+
+			choiceAm++;
+		}
+
 		super();
 	}
 
 	override public function create()
 	{
+		add(choices);
+
 		super.create();
 	}
 
