@@ -50,7 +50,7 @@ class PlayState extends FlxState
 			choice.y = 16 + (choiceRow * 32);
 
 			if (choices_array[i] == 1)
-				choice.color = FlxColor.GREEN;
+				choice.color = FlxColor.LIME;
 
 			choices.add(choice);
 
