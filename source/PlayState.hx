@@ -19,8 +19,8 @@ class PlayState extends FlxState
 		var index:Int = 0;
 		while (index < choices_length)
 		{
-			var random:Int = Std.int(Math.random());
-			if ((index == (choices_length - 1) || random == 1) && !choices_array.contains(1))
+			var random:Float = Math.random();
+			if ((index == (choices_length - 1) || random >= 0.5) && !choices_array.contains(1))
 				choices_array.push(1);
 			else
 				choices_array.push(0);
