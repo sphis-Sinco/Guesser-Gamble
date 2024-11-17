@@ -37,17 +37,18 @@ class PlayState extends FlxState
 
 		var choiceAm:Int = 0;
 		var choiceRow:Int = 0;
+		var padding:Int = 8;
 		for (i in 0...choices_array.length)
 		{
-			var choice:FlxSprite = new FlxSprite(16 + (i * 32), 16).makeGraphic(32, 32, FlxColor.RED);
+			var choice:FlxSprite = new FlxSprite().makeGraphic(32, 32, FlxColor.RED);
 
 			if (choiceAm == 4)
 			{
 				choiceRow++;
 			}
 
-			choice.x = 16 + ((i - (choiceRow * 4)) * 32);
-			choice.y = 16 + (choiceRow * 32);
+			choice.x = 16 + ((i - (choiceRow * 4)) * (choice.width + padding));
+			choice.y = 16 + (choiceRow * (choice.height + padding));
 
 			if (choices_array[i] == 1)
 				choice.color = FlxColor.LIME;
