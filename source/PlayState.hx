@@ -8,7 +8,7 @@ class PlayState extends FlxState
 	public var choiceID_right:Int = 0;
 	public var choiceID_wrong:Int = 1;
 
-	public var choices_length:Int = 2;
+	public var choices_length:Int = 10;
 	public var choices_array:Array<Int> = [];
 
 	override public function new()
@@ -16,7 +16,7 @@ class PlayState extends FlxState
 		if (choices_length < 2)
 			throw '[ERROR] choices_length is an invalid integer (should be 2 or higher)';
 
-		var index:Int = 1;
+		var index:Int = 0;
 		while (index < choices_length)
 		{
 			var random:Int = Std.int(Math.random());
