@@ -12,6 +12,7 @@ class GameoverState extends FlxState
 	public var coinText:FlxText = new FlxText("Insert 1 coin to try again", 16);
 
 	public var retryBtn:FlxButton;
+	public var exitBtn:FlxButton;
 
 	override public function new()
 	{
@@ -26,6 +27,11 @@ class GameoverState extends FlxState
 		retryBtn = new FlxButton(0, 0, "Retry", reset);
 		retryBtn.screenCenter();
 		retryBtn.y -= retryBtn.height * 2;
+
+		exitBtn = new FlxButton(0, 0, "Exit", exit);
+		exitBtn.screenCenter();
+		exitBtn.y += exitBtn.height * 2;
+
 
 		super();
 	}
@@ -49,6 +55,15 @@ class GameoverState extends FlxState
 		});
 	}
 
+	public function exit()
+	{
+		trace('EXIT');
+		FlxG.camera.fade(FlxColor.BLACK, 0.4, false, function()
+		{
+			FlxG.switchState(new MenuState());
+		});
+	}
+	
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
