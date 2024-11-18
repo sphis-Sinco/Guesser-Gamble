@@ -91,6 +91,7 @@ class PlayState extends FlxState
 					if (choice.ID == choiceID_right)
 					{
 						refreshChoices();
+						continue;
 					}
 					else
 					{
@@ -123,14 +124,16 @@ class PlayState extends FlxState
 	public function refreshChoices()
 	{
 		choices_array = [];
+		#if debug
 		trace('cleared choices_array');
+		#end
 
-		for (member in choices.members)
-		{
-			choices.members.remove(member);
-		}
+		if (choices.members.length > 0)
+			choices.destroy();
 
+		#if debug
 		trace('cleared choices.members');
+		#end
 
 
 		var index:Int = 0;
@@ -176,6 +179,8 @@ class PlayState extends FlxState
 
 			choiceAm++;
 		}
+		#if debug
 		trace('Refreshed Choices');
+		#end
 	}
 }
