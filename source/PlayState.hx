@@ -52,9 +52,7 @@ class PlayState extends FlxState
 
 			choice.x = 16 + ((i - (choiceColumn * choiceAmMAX)) * (choice.graphic.width + padding));
 
-			choice.screenCenter(Y);
-			choice.y -= (choiceColumn * (choice.graphic.height + padding));
-			choice.y += (choiceColumn * (choice.graphic.height + padding)) / 2;
+			choice.y = 16 + (choiceColumn * (choice.graphic.height + padding));
 
 			if (choices_array[i] == 1)
 				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
