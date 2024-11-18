@@ -90,10 +90,7 @@ class PlayState extends FlxState
 				{
 					if (choice.ID == choiceID_right)
 					{
-						lives++;
-						// trace('yippie!');
-						if (lives > 5)
-							lives = 5;
+						refreshChoices();
 					}
 					else
 					{
