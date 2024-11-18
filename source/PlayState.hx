@@ -122,15 +122,16 @@ class PlayState extends FlxState
 	}
 	public function refreshChoices()
 	{
-		while (choices_array.length > 0)
+		choices_array = [];
+		trace('cleared choices_array');
+
+		for (member in choices.members)
 		{
-			choices_array.remove(0);
+			choices.members.remove(member);
 		}
 
-		while (choices.members.length > 0)
-		{
-			choices.members.remove(choices.members[0]);
-		}
+		trace('cleared choices.members');
+
 
 		var index:Int = 0;
 		while (index < choices_length)
@@ -175,5 +176,6 @@ class PlayState extends FlxState
 
 			choiceAm++;
 		}
+		trace('Refreshed Choices');
 	}
 }
