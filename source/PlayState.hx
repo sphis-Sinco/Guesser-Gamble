@@ -11,13 +11,16 @@ class PlayState extends FlxState
 	public var choiceID_wrong:Int = 0;
 	public var choiceID_right:Int = 1;
 
-	public var choices_length:Int = 100;
+	public var choices_length:Int = 30;
 
 	public var choices_array:Array<Int> = [];
 	public var choices:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
 	override public function new()
 	{
+		// My mouse was from fnf lmao
+		FlxG.mouse.unload();
+
 		if (choices_length < 2)
 			throw '[ERROR] choices_length is an invalid integer (should be 2 or higher)';
 
