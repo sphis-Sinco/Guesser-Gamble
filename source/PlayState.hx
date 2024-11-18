@@ -78,7 +78,7 @@ class PlayState extends FlxState
 
 			choice.x = 16 + ((i - (choiceColumn * choiceAmMAX)) * (choice.graphic.width + padding));
 
-			choice.y = FlxG.height - (32 - (choiceColumn * (choice.graphic.height + padding)));
+			choice.y = FlxG.height - (64 - (choiceColumn * (choice.graphic.height + padding)));
 
 			#if display_answer
 			if (choice.ID == 1)
