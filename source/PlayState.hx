@@ -129,7 +129,7 @@ class PlayState extends FlxState
 		#end
 
 		if (choices.members.length > 0)
-			choices.destroy();
+			choices.killMembers();
 
 		#if debug
 		trace('cleared choices.members');
