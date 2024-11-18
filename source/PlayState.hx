@@ -18,8 +18,6 @@ class PlayState extends FlxState
 
 	override public function new()
 	{
-		// My mouse was from fnf lmao
-		FlxG.mouse.unload();
 
 		if (choices_length < 2)
 			throw '[ERROR] choices_length is an invalid integer (should be 2 or higher)';
@@ -73,6 +71,8 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+		FlxG.mouse.useSystemCursor = true;
+		
 		add(choices);
 
 		super.create();
@@ -82,6 +82,18 @@ class PlayState extends FlxState
 	{
 		if (FlxG.keys.justReleased.R)
 			FlxG.resetState();
+
+		if (FlxG.mouse.justReleased)
+		{
+			for (choice in choices.members)
+			{
+				if (FlxG.mouse.overlaps(choice))
+				{
+					if (choice.ID == choiceID_right)
+						trace('yippie!');
+				}
+			}
+		}
 
 		super.update(elapsed);
 	}
