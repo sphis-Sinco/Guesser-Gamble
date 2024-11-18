@@ -90,13 +90,10 @@ class PlayState extends FlxState
 			{
 				if (FlxG.mouse.overlaps(choice) && !clickFound)
 				{
-					trace(choice.ID);
-
 					if (choices_array[choice.ID] == choiceID_right)
 					{
 						clickFound = true;
 						refreshChoices();
-						continue;
 					}
 					else
 					{
