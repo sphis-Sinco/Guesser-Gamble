@@ -28,6 +28,7 @@ class PlayState extends FlxState
 
 	override public function new()
 	{
+		FlxG.camera.fade(FlxColor.BLACK, 0.4, true);
 
 		if (choices_length < 2)
 			throw '[ERROR] choices_length is an invalid integer (should be 2 or higher)';
@@ -158,7 +159,6 @@ class PlayState extends FlxState
 			gameoverState = true;
 			FlxG.camera.fade(FlxColor.BLACK, 0.4, false, function()
 			{
-				trace('blackBG tween done');
 				FlxG.switchState(new GameoverState());
 			});
 		}
