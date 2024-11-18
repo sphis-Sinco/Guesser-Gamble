@@ -43,6 +43,7 @@ class PlayState extends FlxState
 		for (i in 0...choices_array.length)
 		{
 			var choice:FlxSprite = new FlxSprite().makeGraphic(32, 32, FlxColor.RED);
+			choice.ID = choices_array[i];
 
 			if (choiceAm == choiceAmMAX)
 			{
@@ -54,8 +55,10 @@ class PlayState extends FlxState
 
 			choice.y = 16 + (choiceColumn * (choice.graphic.height + padding));
 
-			if (choices_array[i] == 1)
+			#if debug
+			if (choice.ID == 1)
 				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
+			#end
 
 			choices.add(choice);
 
