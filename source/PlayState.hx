@@ -84,17 +84,21 @@ class PlayState extends FlxState
 
 		if (FlxG.mouse.justReleased && !dead)
 		{
+			var clickFound:Bool = false;
+
 			for (choice in choices.members)
 			{
-				if (FlxG.mouse.overlaps(choice))
+				if (FlxG.mouse.overlaps(choice) && !clickFound)
 				{
 					if (choice.ID == choiceID_right)
 					{
+						clickFound = true;
 						refreshChoices();
 						continue;
 					}
-					else
+					else if (choice.ID == choiceID_wrong)
 					{
+						clickFound = true;
 						lives--;
 
 						if (lives < 1)
@@ -129,7 +133,12 @@ class PlayState extends FlxState
 		#end
 
 		if (choices.members.length > 0)
-			choices.killMembers();
+			for (i in 0...choices.members.length)
+			{
+				choices.members.remove(choices.members[i]);
+			}
+
+		trace(choices.members);
 
 		#if debug
 		trace('cleared choices.members');
