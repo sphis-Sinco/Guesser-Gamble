@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
 class PlayState extends FlxState
@@ -18,6 +19,7 @@ class PlayState extends FlxState
 	public var choices:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
 	public var lives:Int = 5;
+	public var livesText:FlxText = new FlxText();
 
 	override public function new()
 	{
@@ -76,7 +78,7 @@ class PlayState extends FlxState
 
 			choice.x = 16 + ((i - (choiceColumn * choiceAmMAX)) * (choice.graphic.width + padding));
 
-			choice.y = 16 + (choiceColumn * (choice.graphic.height + padding));
+			choice.y = FlxG.height - (32 - (choiceColumn * (choice.graphic.height + padding)));
 
 			#if display_answer
 			if (choice.ID == 1)
@@ -88,7 +90,8 @@ class PlayState extends FlxState
 			choiceAm++;
 		}
 
-		trace('Lives: $lives');
+		livesText = new FlxText(10, 10);
+		livesText.size = 16;
 
 		super();
 	}
@@ -98,12 +101,15 @@ class PlayState extends FlxState
 		FlxG.mouse.useSystemCursor = true;
 		
 		add(choices);
+		add(livesText);
 
 		super.create();
 	}
 
 	override public function update(elapsed:Float)
 	{
+		livesText.text = 'Lives: $lives';
+
 		if (FlxG.keys.justReleased.R)
 			FlxG.resetState();
 
@@ -132,8 +138,6 @@ class PlayState extends FlxState
 						}
 						// trace('aw');
 					}
-
-					trace('Lives: $lives');
 				}
 			}
 		}
