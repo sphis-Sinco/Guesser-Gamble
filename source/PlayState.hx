@@ -117,6 +117,8 @@ class PlayState extends FlxState
 					{
 						lives++;
 						// trace('yippie!');
+						if (lives > 5)
+							lives = 5;
 					}
 					else
 					{
@@ -124,6 +126,7 @@ class PlayState extends FlxState
 
 						if (lives < 1)
 						{
+							lives = 0;
 							trace('DIED!');
 							// FlxG.switchState(new GameOverState());
 						}
