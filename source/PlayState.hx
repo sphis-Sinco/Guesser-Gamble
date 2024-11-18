@@ -11,7 +11,7 @@ class PlayState extends FlxState
 	public var choiceID_wrong:Int = 0;
 	public var choiceID_right:Int = 1;
 
-	public var choices_length:Int = 10;
+	public var choices_length:Int = 100;
 
 	public var choices_array:Array<Int> = [];
 	public var choices:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
@@ -36,21 +36,25 @@ class PlayState extends FlxState
 		trace(choices_array);
 
 		var choiceAm:Int = 0;
-		var choiceRow:Int = 0;
+		var choiceAmMAX:Int = 15;
+		var choiceColumn:Int = 0;
 		var padding:Int = 8;
 
 		for (i in 0...choices_array.length)
 		{
 			var choice:FlxSprite = new FlxSprite().makeGraphic(32, 32, FlxColor.RED);
 
-			if (choiceAm == 4)
+			if (choiceAm == choiceAmMAX)
 			{
-				choiceRow++;
+				choiceColumn++;
 				choiceAm = 0;
 			}
 
-			choice.x = 16 + ((i - (choiceRow * 4)) * (choice.graphic.width + padding));
-			choice.y = 16 + (choiceRow * (choice.graphic.height + padding));
+			choice.x = 16 + ((i - (choiceColumn * choiceAmMAX)) * (choice.graphic.width + padding));
+
+			choice.screenCenter(Y);
+			choice.y -= (choiceColumn * (choice.graphic.height + padding));
+			choice.y += (choiceColumn * (choice.graphic.height + padding)) / 2;
 
 			if (choices_array[i] == 1)
 				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
