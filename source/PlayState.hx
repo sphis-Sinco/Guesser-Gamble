@@ -65,7 +65,6 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-		FlxG.mouse.useSystemCursor = true;
 		
 		add(choices);
 		add(livesText);

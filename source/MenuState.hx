@@ -30,6 +30,8 @@ class MenuState extends FlxState
 
 	override public function create()
 	{
+		FlxG.mouse.useSystemCursor = true;
+        
 		add(titleText);
 		add(coinText);
 		add(startBtn);
