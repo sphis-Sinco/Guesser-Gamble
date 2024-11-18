@@ -154,7 +154,7 @@ class PlayState extends FlxState
 			index++;
 		}
 
-		trace(choices_array);
+		// trace(choices_array);
 
 		var choiceAm:Int = 0;
 		var choiceAmMAX:Int = 15;
