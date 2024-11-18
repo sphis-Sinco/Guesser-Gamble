@@ -25,7 +25,7 @@ class GameoverState extends FlxState
 
 		retryBtn = new FlxButton(0, 0, "Retry", reset);
 		retryBtn.screenCenter();
-		retryBtn.y -= retryBtn.width * 2;
+		retryBtn.y -= retryBtn.height * 2;
 
 		super();
 	}
