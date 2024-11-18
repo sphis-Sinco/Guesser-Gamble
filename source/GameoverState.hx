@@ -27,7 +27,7 @@ class GameoverState extends FlxState
 	{
 		add(gameoverText);
 		add(coinText);
-		FlxG.camera.fade(FlxColor.BLACK, 1.0, true);
+		FlxG.camera.fade(FlxColor.BLACK, 0.4, true);
 
 		super.create();
 	}

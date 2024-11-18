@@ -156,7 +156,7 @@ class PlayState extends FlxState
 		if (dead && !gameoverState)
 		{
 			gameoverState = true;
-			FlxG.camera.fade(FlxColor.BLACK, 1.0, false, function()
+			FlxG.camera.fade(FlxColor.BLACK, 0.4, false, function()
 			{
 				trace('blackBG tween done');
 				FlxG.switchState(new GameoverState());
