@@ -22,6 +22,9 @@ class PlayState extends FlxState
 	public var livesText:FlxText = new FlxText();
 
 	public var dead:Bool = false;
+	public var gameoverState:Bool = false;
+
+	public var blackBG:FlxSprite = new FlxSprite();
 
 	override public function new()
 	{
@@ -95,6 +98,10 @@ class PlayState extends FlxState
 		livesText = new FlxText(10, 10);
 		livesText.size = 16;
 
+		blackBG.alpha = 0;
+		blackBG.makeGraphic(800, 800, 0xFFFFFF);
+		blackBG.screenCenter();
+
 		super();
 	}
 
@@ -104,6 +111,7 @@ class PlayState extends FlxState
 		
 		add(choices);
 		add(livesText);
+		add(blackBG);
 
 		super.create();
 	}
@@ -136,13 +144,23 @@ class PlayState extends FlxState
 						{
 							lives = 0;
 							trace('DIED!');
+							livesText.text = 'Lives: $lives';
 							dead = true;
-							// FlxG.switchState(new GameOverState());
 						}
 						// trace('aw');
 					}
 				}
 			}
+		}
+
+		if (dead && !gameoverState)
+		{
+			gameoverState = true;
+			FlxG.camera.fade(FlxColor.BLACK, 1.0, false, function()
+			{
+				trace('blackBG tween done');
+				FlxG.switchState(new GameoverState());
+			});
 		}
 
 		super.update(elapsed);
