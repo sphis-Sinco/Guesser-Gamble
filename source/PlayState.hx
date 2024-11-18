@@ -21,6 +21,8 @@ class PlayState extends FlxState
 	public var lives:Int = 5;
 	public var livesText:FlxText = new FlxText();
 
+	public var dead:Bool = false;
+
 	override public function new()
 	{
 
@@ -113,7 +115,7 @@ class PlayState extends FlxState
 		if (FlxG.keys.justReleased.R)
 			FlxG.resetState();
 
-		if (FlxG.mouse.justReleased)
+		if (FlxG.mouse.justReleased && !dead)
 		{
 			for (choice in choices.members)
 			{
@@ -134,6 +136,7 @@ class PlayState extends FlxState
 						{
 							lives = 0;
 							trace('DIED!');
+							dead = true;
 							// FlxG.switchState(new GameOverState());
 						}
 						// trace('aw');
