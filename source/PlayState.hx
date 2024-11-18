@@ -56,7 +56,7 @@ class PlayState extends FlxState
 
 			choice.y = 16 + (choiceColumn * (choice.graphic.height + padding));
 
-			#if debug
+			#if display_answer
 			if (choice.ID == 1)
 				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
 			#end
@@ -91,6 +91,8 @@ class PlayState extends FlxState
 				{
 					if (choice.ID == choiceID_right)
 						trace('yippie!');
+					else
+						trace('aw');
 				}
 			}
 		}
