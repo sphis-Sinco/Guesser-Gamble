@@ -11,16 +11,38 @@ class PlayState extends FlxState
 	public var choiceID_wrong:Int = 0;
 	public var choiceID_right:Int = 1;
 
-	public var choices_length:Int = 30;
+	public var level:Int = 1;
+	public var choices_length:Int = 15;
 
 	public var choices_array:Array<Int> = [];
 	public var choices:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
+	public var lives:Int = 5;
 
 	override public function new()
 	{
 
 		if (choices_length < 2)
 			throw '[ERROR] choices_length is an invalid integer (should be 2 or higher)';
+
+		switch (level)
+		{
+			case 5:
+				trace('Secret Level!');
+				choices_length = 150;
+
+			case 4:
+				choices_length = 60;
+
+			case 3:
+				choices_length = 45;
+
+			case 2:
+				choices_length = 30;
+
+			default:
+				choices_length = 15;
+		}
 
 		var index:Int = 0;
 		while (index < choices_length)
@@ -66,6 +88,8 @@ class PlayState extends FlxState
 			choiceAm++;
 		}
 
+		trace('Lives: $lives');
+
 		super();
 	}
 
@@ -90,9 +114,23 @@ class PlayState extends FlxState
 				if (FlxG.mouse.overlaps(choice))
 				{
 					if (choice.ID == choiceID_right)
-						trace('yippie!');
+					{
+						lives++;
+						// trace('yippie!');
+					}
 					else
-						trace('aw');
+					{
+						lives--;
+
+						if (lives < 1)
+						{
+							trace('DIED!');
+							// FlxG.switchState(new GameOverState());
+						}
+						// trace('aw');
+					}
+
+					trace('Lives: $lives');
 				}
 			}
 		}
