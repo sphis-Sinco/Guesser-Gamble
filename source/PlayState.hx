@@ -90,13 +90,15 @@ class PlayState extends FlxState
 			{
 				if (FlxG.mouse.overlaps(choice) && !clickFound)
 				{
-					if (choice.ID == choiceID_right)
+					trace(choice.ID);
+
+					if (choices_array[choice.ID] == choiceID_right)
 					{
 						clickFound = true;
 						refreshChoices();
 						continue;
 					}
-					else if (choice.ID == choiceID_wrong)
+					else
 					{
 						clickFound = true;
 						lives--;
@@ -138,8 +140,6 @@ class PlayState extends FlxState
 				choices.members.remove(choices.members[i]);
 			}
 
-		trace(choices.members);
-
 		#if debug
 		trace('cleared choices.members');
 		#end
@@ -167,7 +167,7 @@ class PlayState extends FlxState
 		for (i in 0...choices_array.length)
 		{
 			var choice:FlxSprite = new FlxSprite().makeGraphic(32, 32, FlxColor.RED);
-			choice.ID = choices_array[i];
+			choice.ID = i;
 
 			if (choiceAm == choiceAmMAX)
 			{
@@ -180,7 +180,7 @@ class PlayState extends FlxState
 			choice.y = FlxG.height - (64 - (choiceColumn * (choice.graphic.height + padding)));
 
 			#if display_answer
-			if (choice.ID == 1)
+			if (choices_array[choice.ID] == choiceID_right)
 				choice.makeGraphic(choice.graphic.width, choice.graphic.height, FlxColor.LIME);
 			#end
 
