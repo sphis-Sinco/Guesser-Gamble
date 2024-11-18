@@ -122,20 +122,14 @@ class PlayState extends FlxState
 	}
 	public function refreshChoices()
 	{
-		if (choices_array.length > 0)
+		while (choices_array.length > 0)
 		{
-			for (i in 0...choices_array.length)
-			{
-				choices_array.remove(0);
-			}
+			choices_array.remove(0);
 		}
 
-		if (choices.length > 0)
+		while (choices.members.length > 0)
 		{
-			for (i in 0...choices.members.length)
-			{
-				choices.members.remove(choices.members[0]);
-			}
+			choices.members.remove(choices.members[0]);
 		}
 
 		var index:Int = 0;
